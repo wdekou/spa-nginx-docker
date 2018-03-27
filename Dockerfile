@@ -5,13 +5,9 @@ LABEL version="1.0"
 LABEL maintainer="William Dekou <williamdekou@gmail.com>"
 
 ENV NGINX_VERSION 1.13.10
-ENV GIT_EMAIL "williamdekou@gmail.com"
-ENV GIT_NAME "William DEKOU"
-ENV GIT_USERNAME "williamdekou"
-ENV GIT_BRANCH "master"
-ENV GIT_REPO "https://github.com/williamdekou/spa-nginx-docker.git"
-ENV REMOVE_FILES 0
-RUN apt-get -qq update && apt-get -qq -my install curl \ 
+
+RUN apt-get -qq update && apt-get -qq -my install apt-utils \
+    curl \ 
     openssh-client \
     wget \
     supervisor \

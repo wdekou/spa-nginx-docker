@@ -42,7 +42,7 @@ if [ ! -d "/tmp/spa/.git" ]; then
    if [ ! -z ${REMOVE_FILES} ] && [ ${REMOVE_FILES} == 0 ]; then
      echo "skiping removal of files"
    else
-     rm -Rf /tmp/spa/*
+     rm -Rf /tmp/spa
    fi
    GIT_COMMAND='git clone '
    if [ ! -z "$GIT_BRANCH" ]; then
@@ -59,8 +59,6 @@ if [ ! -d "/tmp/spa/.git" ]; then
     fi
    fi
    ${GIT_COMMAND} /tmp/spa || exit 1
-   echo "http://www.filemaker.com"
-   
    cd /tmp/spa && yarn && yarn build && mv ./build/* $WEBROOT
    if [ -z "$SKIP_CHOWN" ]; then
      chown -Rf nginx.nginx $WEBROOT
