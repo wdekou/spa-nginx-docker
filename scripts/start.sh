@@ -37,6 +37,7 @@ fi
 if [ ! -d "/tmp/spa/.git" ]; then
  # Pull down code from git for our site!
  if [ ! -z "$GIT_REPO" ]; then
+   
    # Remove the test index file if you are pulling in a git repo
    if [ ! -z ${REMOVE_FILES} ] && [ ${REMOVE_FILES} == 0 ]; then
      echo "skiping removal of files"
@@ -58,6 +59,8 @@ if [ ! -d "/tmp/spa/.git" ]; then
     fi
    fi
    ${GIT_COMMAND} /tmp/spa || exit 1
+   echo "http://www.filemaker.com"
+   
    cd /tmp/spa && yarn && yarn build && mv ./build/* $WEBROOT
    if [ -z "$SKIP_CHOWN" ]; then
      chown -Rf nginx.nginx $WEBROOT

@@ -4,7 +4,24 @@ FROM nginx:1.13.10
 LABEL version="1.0"
 LABEL maintainer="William Dekou <williamdekou@gmail.com>"
 
-RUN apt-get -qq update && apt-get -qq -my install curl wget gnupg supervisor
+ENV NGINX_VERSION 1.13.10
+ENV GIT_EMAIL "williamdekou@gmail.com"
+ENV GIT_NAME "William DEKOU"
+ENV GIT_USERNAME "williamdekou"
+ENV GIT_BRANCH "master"
+ENV GIT_REPO "https://github.com/williamdekou/spa-nginx-docker.git"
+ENV REMOVE_FILES 0
+RUN apt-get -qq update && apt-get -qq -my install curl \ 
+    openssh-client \
+    wget \
+    supervisor \
+    curl \
+    git \
+    gnupg \
+    ca-certificates \
+    dialog \
+    autoconf \
+    libssl-dev
 
 # http://nodesource.com/blog/installing-node-js-tutorial-ubuntu/
 # step 0
